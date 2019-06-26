@@ -15,3 +15,16 @@ void draw(){
     case 3: gameOver();
   }
 }
+/*
+void mapLoad(int[][] a, int n){
+  String[] tmp = loadStrings(str(char(n)) + ".dot");
+  tmp = split(tmp, ',');
+  for (int i = 0; i <= 2; i++){
+    a[i]    = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    a[i+23] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+  }
+  for (int i = 0; i < 400; i++){
+
+  }
+}
+*/
