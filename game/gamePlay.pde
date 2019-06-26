@@ -34,6 +34,47 @@ void gamePlay(){
   background(128);
   getCurrentLocation();
   drawPlayerView();
+  drawMiniMap();
+}
+
+void drawMiniMap(){
+  int[][] tmp = {{grcp(-2,-2),grcp(-1,-2),grcp(0,-2),grcp(1,-2),grcp(2,-2)},
+                 {grcp(-2,-1),grcp(-1,-1),grcp(0,-1),grcp(1,-1),grcp(2,-1)},
+                 {grcp(-2,0 ),grcp(-1,0 ),grcp(0,0 ),grcp(1,0 ),grcp(2,0 )},
+                 {grcp(-2,1 ),grcp(-1,1 ),grcp(0,1 ),grcp(1,1 ),grcp(2,1 )},
+                 {grcp(-2,2 ),grcp(-1,2 ),grcp(0,2 ),grcp(1,2 ),grcp(2,2 )}};
+  fill(255);
+  float mapWidth  = 100;
+  float mapHeight = 100;
+  translate(-(width/2)+10, -(height/2)+10);
+  pushMatrix();
+  rect(0, 0, mapWidth, mapHeight);
+  for (int i = 0; i <= 4; i++){
+    for (int j = 0; j <=4; j++){
+      if(tmp[i][j] == 1){
+        fill(0);
+        rect(j*mapWidth/5,i*mapHeight/5,mapWidth/5,mapHeight/5);
+      }
+    }
+  }
+  fill(255,0,0);
+  translate(mapWidth/2, mapHeight/2);
+  switch(pDir){
+      case 0:
+        break;
+      case 1:
+        rotate(PI/2);
+        break;
+      case 2:
+        rotate(PI);
+        break;
+      case 3:
+        rotate(PI*3/2);
+        break;
+  }
+  triangle(-5,5,5,5,0,-5);
+  popMatrix();
+
 }
 
 void getCurrentLocation(){
@@ -82,8 +123,6 @@ void drawPlayerView(){
       drawLayer(3);
     }
   }
-
-
 }
 
 void drawLayer(int l){
@@ -204,8 +243,8 @@ void lineHelper(char dir, int[][] gCB, int l){
     line(pow(-1, ex)*u1x, u1y, pow(-1, ex)*u2x, u2y);
     line(pow(-1, ex)*d1x, d1y, pow(-1, ex)*d2x, d2y);
   }
-
 }
+
 boolean boxChecker(int[][] ar, int[] a){
   if (ar[0][0] == a[0] && ar[0][1] == a[1] && ar[1][0] == a[2] && ar[1][1] == a[3]){
     return true;
@@ -213,12 +252,14 @@ boolean boxChecker(int[][] ar, int[] a){
     return false;
   }
 }
+
 int[] typeHelper(int[] a, int[] b){
   for(int i = 0; i <= 3; i ++){
     a[i] = b[i];
   }
   return a;
 }
+
 int[] switchArray(int[] a){
   int[] b = new int[4];
   b[0] = a[1];
@@ -227,6 +268,7 @@ int[] switchArray(int[] a){
   b[3] = a[2];
   return b;
 }
+
 int grcp(int x, int y){ //grcp means "Get Relative Coordinate of Player"
   int tmp = currentMap[pPosY + y][pPosX + x];
   return tmp;
@@ -236,7 +278,6 @@ int gccl(int x, int y){ //grcp means "Get Coordinate of Current Location"
   int tmp = currentLocation[y][x];
   return tmp;
 }
-
 
 void keyPressed(){
   switch(key){
