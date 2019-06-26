@@ -1,4 +1,4 @@
-int gseq = 1;
+int gseq = 2;
 Textbox prologueText1;
 //float displayWidth = 1280;
 //float displayHight = 720;
