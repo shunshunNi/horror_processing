@@ -1,7 +1,10 @@
-int gseq = 0;
-
+int gseq = 1;
+Textbox prologueText1;
+//float displayWidth = 1280;
+//float displayHight = 720;
 void setup(){
-  size(1280,720,P2D);
+  size(1280, 720, P2D);
+  prologueText1 = new Textbox("test");
 }
 
 void draw(){
