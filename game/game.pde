@@ -17,14 +17,16 @@ void draw(){
 }
 /*
 void mapLoad(int[][] a, int n){
-  String[] tmp = loadStrings(str(char(n)) + ".dot");
-  tmp = split(tmp, ',');
+  String[] loaded = loadStrings(str(char(n)) + ".dot");
+  loaded = split(tmp, ',');
   for (int i = 0; i <= 2; i++){
-    a[i]    = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-    a[i+23] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    for (int j = 0; j <= 25; j++){
+      a[i][j]    = 1;
+      a[i+23][j] = 1;
+    }
   }
   for (int i = 0; i < 400; i++){
-
+    a[i/20 + 3][(i+2)%20] = loaded[i+2];
   }
 }
 */
