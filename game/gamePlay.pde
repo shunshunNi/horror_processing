@@ -27,7 +27,8 @@ int[][] map1 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
-int[][] currentMap = map1;
+int[][] map2 = new int[26][26];
+int[][] currentMap = map2;
 int[][] currentLocation = new int[4][3];
 
 void gamePlay(){
@@ -35,6 +36,9 @@ void gamePlay(){
   getCurrentLocation();
   drawPlayerView();
   drawMiniMap();
+  if (pPosY == 22 && pPosX == 22){
+    gseq = 4;
+  }
 }
 
 void drawMiniMap(){
@@ -280,6 +284,13 @@ int gccl(int x, int y){ //grcp means "Get Coordinate of Current Location"
 
 void keyPressed(){
   switch(key){
+    case ENTER:
+    case RETURN:
+      if (gseq == 0){
+          println("changed");
+          gseq = 2;
+      }
+      break;
     case 'd':
       pDir += 1;
       pDir %= 4;
